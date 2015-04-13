@@ -12,11 +12,16 @@ module.exports = function(options) {
         var _this = this;
         var ee = appdmg(options);
 
-        ee.on('finish', callback);
+        ee.on('progress', function(info) {
+          gutil.log(info.current + '/' + info.total + ' ' + info.type + ' ' + (info.title || info.status));
+        });
+
         ee.on('error', function(err) {
           _this.emit('error', new PluginError(PLUGIN_NAME, err));
           callback();
         });
+
+        ee.on('finish', callback);
     });
 
     // returning the file stream
