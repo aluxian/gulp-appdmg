@@ -1,27 +1,28 @@
 {
-  "name": "gulp-node-webkit-builder",
-  "version": "1.1.0",
-  "description": "Help developers build their own node-webkit apps for different platforms such as win, mac and linux with gulp.",
+  "name": "gulp-appdmg",
+  "version": "1.0.0",
+  "description": "Generate beautiful DMG-images for your OS X applications.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/leftstick/gulp-node-webkit-builder.git"
+    "url": "https://github.com/Aluxian/gulp-appdmg.git"
   },
   "keywords": [
-    "gulpplugin"
+    "gulpplugin",
+    "dmg"
   ],
   "scripts": {
     "test": "mocha --reporter nyan -t 500000"
   },
-  "author": "Howard.Zuo",
+  "author": "Alexandru Rosianu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leftstick/gulp-node-webkit-builder/issues"
+    "url": "https://github.com/Aluxian/gulp-appdmg/issues"
   },
-  "homepage": "https://github.com/leftstick/gulp-node-webkit-builder",
+  "homepage": "https://github.com/Aluxian/gulp-appdmg",
   "dependencies": {
+    "appdmg": "^0.3.1",
     "gulp-util": "^3.0.4",
-    "node-webkit-builder": "^1.0.11",
     "through2": "^0.6.3"
   },
   "devDependencies": {

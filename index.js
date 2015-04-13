@@ -1,46 +1,25 @@
-var NwBuilder = require('node-webkit-builder');
+var appdmg = require('appdmg');
 var through = require('through2');
 var gutil = require('gulp-util');
+
 var PluginError = gutil.PluginError;
+var PLUGIN_NAME = 'gulp-appdmg';
 
-var PLUGIN_NAME = 'gulp-node-webkit-builder';
-
-
-var gulpNodeWebkitBuilder = function(opts) {
-
-    var options = opts || {};
-
-    var files = [];
-
+module.exports = function(options) {
     var stream = through.obj(function(file, encoding, next) {
-
-        files.push(file.path);
-
         next();
-
-    }, function(cb) {
-
+    }, function(callback) {
         var _this = this;
+        var ee = appdmg(options);
 
-        options.files = files;
-
-        var nw = new NwBuilder(options);
-
-        nw.on('log', gutil.log);
-
-        nw.build().then(function() {
-            gutil.log('all done!');
-            cb();
-        }).catch(function(err) {
-            _this.emit('error', new PluginError(PLUGIN_NAME, 'Error occured while building app!'));
-            return cb();
+        ee.on('finish', callback);
+        ee.on('error', function(err) {
+          _this.emit('error', new PluginError(PLUGIN_NAME, err));
+          callback();
         });
-
     });
 
     // returning the file stream
     stream.resume();
     return stream;
 };
-
-module.exports = gulpNodeWebkitBuilder;

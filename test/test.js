@@ -3,26 +3,25 @@
 
 'use strict';
 
-var builder = require('../');
+var appdmg = require('../');
 var gulp = require('gulp');
 
 require('mocha');
 
-describe('gulp-node-webkit-builder', function() {
+describe('gulp-appdmg', function() {
 
-    it('default test', function(done) {
-
-        gulp.src(['test/resources/*.*'])
-            .pipe(builder({
-                version: 'v0.12.0',
-                platforms: ['osx64']
-            }))
-            .on('end', function() {
-                done();
-            })
-            .on('error', function(err) {
-                done(err);
-            });
-    });
+  it('default test', function(done) {
+    gulp.src([])
+      .pipe(appdmg({
+        source: 'test/res/appdmg.json',
+        target: 'test/build/app.dmg'
+      }))
+      .on('end', function() {
+        done();
+      })
+      .on('error', function(err) {
+        done(err);
+      });
+  });
 
 });
