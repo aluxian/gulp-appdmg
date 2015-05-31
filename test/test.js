@@ -11,15 +11,20 @@ require('mocha');
 describe('gulp-appdmg', function() {
 
   it('default test', function(done) {
+    var errored = false;
+
     gulp.src([])
       .pipe(appdmg({
         source: 'test/res/appdmg.json',
         target: 'test/build/app.dmg'
       }))
       .on('end', function() {
-        done();
+        if (!errored) {
+          done();
+        }
       })
       .on('error', function(err) {
+        errored = true;
         done(err);
       });
   });
