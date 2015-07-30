@@ -1,9 +1,6 @@
 gulp-appdmg
 ========================
 
-![](https://david-dm.org/Aluxian/gulp-appdmg.png)
-![](https://api.travis-ci.org/Aluxian/gulp-appdmg.svg?branch=master)
-
 Generate beautiful DMG-images for your OS X applications.
 
 ## Information
