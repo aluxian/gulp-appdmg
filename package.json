@@ -1,8 +1,11 @@
 {
   "name": "gulp-appdmg",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate beautiful DMG-images for your OS X applications.",
   "main": "index.js",
+  "os": [
+    "darwin"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Aluxian/gulp-appdmg.git"
